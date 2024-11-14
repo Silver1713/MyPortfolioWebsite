@@ -1,0 +1,398 @@
+$basicPaddingConfig : 8%;
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/terminal');
+@mixin basic_paddings {
+    padding-top: $basicPaddingConfig;
+    padding-bottom: $basicPaddingConfig;
+}
+
+@mixin skill_bar($width, $color) {
+  width: $width;
+  background-color: $color
+}
+
+body {
+    font-family: 'Titillium Web', serif;
+
+}
+
+
+.home_container {
+    @include basic_paddings();
+}
+
+.nav-pills {
+    li {
+        a:hover {
+            background-color: rgb(229, 229, 229);
+        }
+    }
+}
+
+
+.bg-imgg {
+    background-image: url('https://freedesignfile.com/upload/2017/01/White-geometric-shapes-backgrounds-vector-set-06.jpg');
+}
+
+
+.text-cursor-blink {
+    animation: cursor-blink .5s linear alternate infinite;
+  }
+  
+  
+  @keyframes cursor-blink {
+    0% {
+      opacity: 100%;
+    }
+    50% {
+      opacity: 0%;
+  
+    }
+    
+  }
+
+
+  .bar {
+    height: 5px;
+    width: 80%;
+    background-color: rgb(190, 188, 188);
+    border-radius: 5px;
+    .csharp {
+      @include skill_bar(80%, cadetblue)
+    }
+    .unity {
+      @include skill_bar(95%, rgb(228, 186, 133) )
+    }
+    .unreal {
+      @include skill_bar(15%, rgb(4, 175, 110))
+    }
+    .android {
+      @include skill_bar(70%, rgb(12, 114, 12) )
+    }
+    .maya {
+      @include skill_bar(55%, rgb(141, 225, 242) )
+    }
+    .blender {
+      @include skill_bar(48%, orange )
+    }
+  }
+
+  .icon {
+    list-style-type:none
+  }
+
+  .main-timeline {
+    position: relative
+}
+
+.main-timeline:before {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 100%;
+    background: #c6c6c6;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0
+}
+
+.main-timeline .timeline {
+    margin-bottom: 40px;
+    position: relative
+}
+
+.main-timeline .timeline:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.main-timeline .icon {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0
+}
+
+.main-timeline .icon:before,
+.main-timeline .icon:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.33s ease-out 0s
+}
+
+.main-timeline .icon:before {
+    background: #fff;
+    border: 2px solid #232323;
+    left: -3px
+}
+
+.main-timeline .icon:after {
+    border: 2px solid #c6c6c6;
+    left: 3px
+}
+
+.main-timeline .timeline:hover .icon:before {
+    left: 3px
+}
+
+.main-timeline .timeline:hover .icon:after {
+    left: -3px
+}
+
+.main-timeline .date-content {
+    width: 50%;
+    float: left;
+    margin-top: 22px;
+    position: relative
+}
+
+.main-timeline .date-content:before {
+    content: "";
+    width: 36.5%;
+    height: 2px;
+    background: #c6c6c6;
+    margin: auto 0;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0
+}
+
+.main-timeline .date-outer {
+    width: 125px;
+    height: 125px;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    z-index: 1
+}
+
+.main-timeline .date-outer:before,
+.main-timeline .date-outer:after {
+    content: "";
+    width: 125px;
+    height: 125px;
+    margin: 0 auto;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.33s ease-out 0s
+}
+
+.main-timeline .date-outer:before {
+    background: #fff;
+    border: 2px solid #232323;
+    left: -6px
+}
+
+.main-timeline .date-outer:after {
+    border: 2px solid #c6c6c6;
+    left: 6px
+}
+
+.main-timeline .timeline:hover .date-outer:before {
+    left: 6px
+}
+
+.main-timeline .timeline:hover .date-outer:after {
+    left: -6px
+}
+
+.main-timeline .date {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 27%;
+    left: 0
+}
+
+.main-timeline .month {
+    font-size: 18px;
+    font-weight: 700
+}
+
+.main-timeline .year {
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    color: #232323;
+    line-height: 36px
+}
+
+.main-timeline .timeline-content {
+    width: 50%;
+    padding: 20px 0 20px 50px;
+    float: right
+}
+
+.main-timeline .title {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0 0 15px 0
+}
+
+.main-timeline .description {
+    margin-bottom: 0
+}
+
+.main-timeline .timeline:nth-child(2n) .date-content {
+    float: right
+}
+
+.main-timeline .timeline:nth-child(2n) .date-content:before {
+    left: 10px
+}
+
+.main-timeline .timeline:nth-child(2n) .timeline-content {
+    padding: 20px 50px 20px 0;
+    text-align: right
+}
+
+@media only screen and (max-width: 991px) {
+    .main-timeline .date-content {
+        margin-top: 35px
+    }
+    .main-timeline .date-content:before {
+        width: 22.5%
+    }
+    .main-timeline .timeline-content {
+        padding: 10px 0 10px 30px
+    }
+    .main-timeline .title {
+        font-size: 17px
+    }
+    .main-timeline .timeline:nth-child(2n) .timeline-content {
+        padding: 10px 30px 10px 0
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .main-timeline:before {
+        margin: 0;
+        left: 7px
+    }
+    .main-timeline .timeline {
+        margin-bottom: 20px
+    }
+    .main-timeline .timeline:last-child {
+        margin-bottom: 0
+    }
+    .main-timeline .icon {
+        margin: auto 0
+    }
+    .main-timeline .date-content {
+        width: 95%;
+        float: right;
+        margin-top: 0
+    }
+    .main-timeline .date-content:before {
+        display: none
+    }
+    .main-timeline .date-outer {
+        width: 110px;
+        height: 110px
+    }
+    .main-timeline .date-outer:before,
+    .main-timeline .date-outer:after {
+        width: 110px;
+        height: 110px
+    }
+    .main-timeline .date {
+        top: 30%
+    }
+    .main-timeline .year {
+        font-size: 24px
+    }
+    .main-timeline .timeline-content,
+    .main-timeline .timeline:nth-child(2n) .timeline-content {
+        width: 95%;
+        text-align: center;
+        padding: 10px 0
+    }
+    .main-timeline .title {
+        margin-bottom: 10px
+    }
+}
+
+.dark-mode {
+    background-color: #02000d !important;
+    color: whitesmoke !important;
+
+}
+
+
+.divider-vertical {
+    height: 100%;
+    border-right: 1px solid rgb(174, 174, 174);
+}
+
+
+.card-divider {
+    height: 100%;
+    border-left: 1px solid rgb(7, 7, 7);
+    
+}
+
+
+.no-style {
+    text-decoration: none;
+}
+
+.project-desc {
+    font-size: 12px;
+    color: rgb(189, 185, 185) !important;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.link-title {
+    font-size: 12px;
+}
+
+.link-desc {
+    font-size: 8px;
+    color: rgb(139, 139, 139);
+}
+
+
+.card-color-bg {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    margin-top: 10px;
+}
+
+.project-title {
+    font-size: 30px;
+}
+
+.project-link {
+    font-size: 10px;
+}
+.subdisplay-1 {
+    margin-top: 10px;
+    font-size: 1.3em;
+}
+
+.symbols {
+    font-size: 30px;
+}
+
+.job-title {
+    font-family: 'Terminal', sans-serif;
+}

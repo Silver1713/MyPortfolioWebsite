@@ -1,0 +1,32 @@
+.custom-color-violet {
+    background: rgb(192, 0, 255);
+    background: linear-gradient(90deg, rgba(192, 0, 255, 1) 0%, rgba(66, 142, 228, 1) 90%, rgba(12, 189, 226, 1) 100%);
+}
+
+.home_container {
+    
+
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.home_container > .content_title{
+    font-size: calc(4rem);
+}
+
+
+.about_container {
+    text-align: center;
+    background-color: rgb(30, 169, 255);
+    color:aliceblue;
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.skill_container {
+    text-align: center;
+    
+    color:rgb(0, 0, 0);
+    padding-top: 8%;
+    padding-bottom: 8%;
+}

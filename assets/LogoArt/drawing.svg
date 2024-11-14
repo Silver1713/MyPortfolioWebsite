@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg55502"
+   sodipodi:docname="drawing.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview55504"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.0359279"
+     inkscape:rotation="-2"
+     inkscape:cx="525.17526"
+     inkscape:cy="554.04481"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g73942" />
+  <defs
+     id="defs55499">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Greyscale"
+       id="filter74882"
+       x="-0.012826656"
+       y="-0.034304423"
+       width="1.0259063"
+       height="1.0685507">
+      <feColorMatrix
+         values="0.21 0.72 0.072 0 0 0.21 0.72 0.072 0 0 0.21 0.72 0.072 0 0 0 0 0 1 0 "
+         id="feColorMatrix74880"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix74902" />
+      <feColorMatrix
+         id="feColorMatrix74904"
+         values="0.21 0.72 0.072 0 0 0.21 0.72 0.072 0 0 0.21 0.72 0.072 0 0 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Greyscale"
+       id="filter75042"
+       x="-0.012826673"
+       y="-0.034304423"
+       width="1.0259064"
+       height="1.0685507">
+      <feColorMatrix
+         values="0.21 0.72 0.072 0 0 0.21 0.72 0.072 0 0 0.21 0.72 0.072 0 0 0 0 0 1 0 "
+         id="feColorMatrix75040" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g73927">
+      <rect
+         style="fill:#0078d7;fill-opacity:1;stroke:none;stroke-width:0.266677;stroke-opacity:1"
+         id="rect73421"
+         width="35.249912"
+         height="27.875803"
+         x="43.860527"
+         y="87.935028"
+         rx="0.44588903"
+         ry="0.30397186" />
+      <rect
+         style="fill:none;stroke:#ffffff;stroke-width:0.256519;stroke-opacity:1"
+         id="rect66004"
+         width="12.386478"
+         height="7.5780663"
+         x="55.00032"
+         y="95.546944"
+         ry="0.35940328"
+         rx="0.49032637" />
+      <rect
+         style="fill:none;stroke:#ffffff;stroke-width:0.223199;stroke-opacity:1"
+         id="rect66399"
+         width="11.087738"
+         height="6.4092827"
+         x="55.665936"
+         y="96.180061"
+         ry="0.30397162"
+         rx="0.43891492" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.148534"
+         x="50.992462"
+         y="113.72143"
+         id="text26778"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan26776"
+           x="50.992462"
+           y="113.72143"
+           style="stroke-width:0.148534;fill:#ffffff">&lt;/&gt;</tspan></text>
+      <path
+         id="rect68580"
+         style="fill:none;stroke:#ffffff;stroke-width:0.280789;stroke-opacity:1"
+         d="m 54.736601,103.78055 12.874457,0.0325 1.748637,4.06705 h -16.29887 z"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         id="path69466"
+         style="fill:none;stroke:#ffffff;stroke-width:0.235542;stroke-opacity:1"
+         d="m 55.074405,104.26096 12.267161,0.002 1.298852,3.17861 H 53.750223 Z"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55899px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.138975"
+         x="47.834709"
+         y="119.11096"
+         id="text69843"
+         transform="scale(1.0542823,0.94851256)"><tspan
+           sodipodi:role="line"
+           id="tspan69841"
+           x="47.834709"
+           y="119.11096"
+           style="stroke-width:0.138975;fill:#ffffff">JIA</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.148534"
+         x="48.464321"
+         y="106.05906"
+         id="text71995"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan71993"
+           x="48.464321"
+           y="106.05906"
+           style="stroke-width:0.148534;fill:#ffffff">YEO</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.35376px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.133844"
+         x="58.894184"
+         y="114.77499"
+         id="text71999"
+         transform="scale(1.0153608,0.98487158)"><tspan
+           sodipodi:role="line"
+           id="tspan71997"
+           x="58.894184"
+           y="114.77499"
+           style="stroke-width:0.133844;fill:#ffffff">HAO</tspan></text>
+    </g>
+    <g
+       id="g73942">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.256519;stroke-opacity:1"
+         id="rect73890"
+         width="12.386478"
+         height="7.5780663"
+         x="113.07706"
+         y="105.65524"
+         ry="0.35940328"
+         rx="0.49032637" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.223199;stroke-opacity:1"
+         id="rect73892"
+         width="11.087738"
+         height="6.4092827"
+         x="113.74267"
+         y="106.28835"
+         ry="0.30397162"
+         rx="0.43891492" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.148534;stroke-opacity:1"
+         x="102.53381"
+         y="125.11144"
+         id="text73896"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan73894"
+           x="102.53381"
+           y="125.11144"
+           style="fill:#ffffff;stroke-width:0.148534;stroke:#000000;stroke-opacity:1">&lt;/&gt;</tspan></text>
+      <path
+         id="path73898"
+         style="fill:none;stroke:#000000;stroke-width:0.280789;stroke-opacity:1"
+         d="m 112.81333,113.88884 12.87446,0.0325 1.74864,4.06705 h -16.29887 z"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         id="path73900"
+         style="fill:none;stroke:#000000;stroke-width:0.235542;stroke-opacity:1"
+         d="m 113.15114,114.36925 12.26716,0.002 1.29885,3.17861 h -14.89019 z"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55899px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.138975;stroke-opacity:1"
+         x="102.92122"
+         y="129.76796"
+         id="text73904"
+         transform="scale(1.0542823,0.94851256)"><tspan
+           sodipodi:role="line"
+           id="tspan73902"
+           x="102.92122"
+           y="129.76796"
+           style="fill:#ffffff;stroke-width:0.138975;stroke:#000000;stroke-opacity:1">JIA</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.148534;stroke-opacity:1"
+         x="100.00568"
+         y="117.44907"
+         id="text73908"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan73906"
+           x="100.00568"
+           y="117.44907"
+           style="fill:#ffffff;stroke-width:0.148534;stroke:#000000;stroke-opacity:1">YEO</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.35376px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.133844;stroke-opacity:1"
+         x="116.09231"
+         y="125.03855"
+         id="text73912"
+         transform="scale(1.0153608,0.98487158)"><tspan
+           sodipodi:role="line"
+           id="tspan73910"
+           x="116.09231"
+           y="125.03855"
+           style="fill:#ffffff;stroke-width:0.133844;stroke:#000000;stroke-opacity:1">HAO</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.256519;stroke-opacity:1"
+         id="rect74500"
+         width="12.386478"
+         height="7.5780663"
+         x="150.98181"
+         y="90.473091"
+         ry="0.35940328"
+         rx="0.49032637" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.223199;stroke-opacity:1"
+         id="rect74502"
+         width="11.087738"
+         height="6.4092827"
+         x="151.64742"
+         y="91.106201"
+         ry="0.30397162"
+         rx="0.43891492" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1"
+         x="136.17314"
+         y="108.00422"
+         id="text74506"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan74504"
+           x="136.17314"
+           y="108.00422"
+           style="fill:#000000">&lt;/&gt;</tspan></text>
+      <path
+         id="path74508"
+         style="fill:none;stroke:#000000;stroke-width:0.280789;stroke-opacity:1"
+         d="m 150.71808,98.706693 12.87446,0.0325 1.74864,4.067047 h -16.29887 z"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         id="path74510"
+         style="fill:none;stroke:#000000;stroke-width:0.235542;stroke-opacity:1"
+         d="m 151.05589,99.187103 12.26716,0.002 1.29885,3.178607 h -14.89019 z"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55899px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.138975;stroke-opacity:1"
+         x="138.87434"
+         y="113.7617"
+         id="text74514"
+         transform="scale(1.0542823,0.94851256)"><tspan
+           sodipodi:role="line"
+           id="tspan74512"
+           x="138.87434"
+           y="113.7617"
+           style="fill:#000000;stroke:none;stroke-width:0.138975;stroke-opacity:1">JIA</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1"
+         x="133.645"
+         y="100.34185"
+         id="text74518"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan74516"
+           x="133.645"
+           y="100.34185"
+           style="fill:#000000">YEO</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.35376px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.133844;stroke-opacity:1"
+         x="153.42361"
+         y="109.62319"
+         id="text74522"
+         transform="scale(1.0153608,0.98487158)"><tspan
+           sodipodi:role="line"
+           id="tspan74520"
+           x="153.42361"
+           y="109.62319"
+           style="fill:#000000;stroke:none;stroke-width:0.133844;stroke-opacity:1">HAO</tspan></text>
+      <g
+         id="g74878"
+         style="filter:url(#filter74882)">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:0.256519;stroke-opacity:1"
+           id="rect74790"
+           width="12.386478"
+           height="7.5780663"
+           x="162.12775"
+           y="131.32681"
+           ry="0.35940328"
+           rx="0.49032637" />
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:0.223199;stroke-opacity:1"
+           id="rect74792"
+           width="11.087738"
+           height="6.4092827"
+           x="162.79335"
+           y="131.95993"
+           ry="0.30397162"
+           rx="0.43891492" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1"
+           x="146.06483"
+           y="154.03815"
+           id="text74796"
+           transform="scale(1.1267988,0.88746989)"><tspan
+             sodipodi:role="line"
+             id="tspan74794"
+             x="146.06483"
+             y="154.03815"
+             style="fill:#000000">&lt;/&gt;</tspan></text>
+        <path
+           id="path74798"
+           style="fill:none;stroke:#000000;stroke-width:0.280789;stroke-opacity:1"
+           d="m 161.86402,139.56041 12.87446,0.0325 1.74864,4.06705 h -16.29887 z"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           id="path74800"
+           style="fill:none;stroke:#000000;stroke-width:0.235542;stroke-opacity:1"
+           d="m 162.20183,140.04082 12.26716,0.002 1.29885,3.17861 h -14.89019 z"
+           sodipodi:nodetypes="ccccc" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55899px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.138975;stroke-opacity:1"
+           x="149.44641"
+           y="156.83305"
+           id="text74804"
+           transform="scale(1.0542823,0.94851256)"><tspan
+             sodipodi:role="line"
+             id="tspan74802"
+             x="149.44641"
+             y="156.83305"
+             style="fill:#000000;stroke:none;stroke-width:0.138975;stroke-opacity:1">JIA</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1"
+           x="143.5367"
+           y="146.37578"
+           id="text74808"
+           transform="scale(1.1267988,0.88746989)"><tspan
+             sodipodi:role="line"
+             id="tspan74806"
+             x="143.5367"
+             y="146.37578"
+             style="fill:#000000">YEO</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.35376px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.133844;stroke-opacity:1"
+           x="164.40094"
+           y="151.10446"
+           id="text74812"
+           transform="scale(1.0153608,0.98487158)"><tspan
+             sodipodi:role="line"
+             id="tspan74810"
+             x="164.40094"
+             y="151.10446"
+             style="fill:#000000;stroke:none;stroke-width:0.133844;stroke-opacity:1">HAO</tspan></text>
+      </g>
+      <g
+         id="g75515"
+         transform="translate(0.6411741,7.7519814)">
+        <rect
+           style="fill:none;stroke:#ffffff;stroke-width:0.256519;stroke-opacity:1"
+           id="rect74814"
+           width="12.386478"
+           height="7.5780663"
+           x="108.02145"
+           y="139.71284"
+           ry="0.35940328"
+           rx="0.49032637" />
+        <rect
+           style="fill:none;stroke:#ffffff;stroke-width:0.223199;stroke-opacity:1"
+           id="rect74816"
+           width="11.087738"
+           height="6.4092827"
+           x="108.68706"
+           y="140.34595"
+           ry="0.30397162"
+           rx="0.43891492" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1"
+           x="98.047112"
+           y="163.4875"
+           id="text74820"
+           transform="scale(1.1267988,0.88746989)"><tspan
+             sodipodi:role="line"
+             id="tspan74818"
+             x="98.047112"
+             y="163.4875"
+             style="fill:#ffffff">&lt;/&gt;</tspan></text>
+        <path
+           id="path74822"
+           style="fill:none;stroke:#ffffff;stroke-width:0.280789;stroke-opacity:1"
+           d="m 107.75772,147.94644 12.87446,0.0325 1.74864,4.06705 h -16.29887 z"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           id="path74824"
+           style="fill:none;stroke:#ffffff;stroke-width:0.235542;stroke-opacity:1"
+           d="m 108.09553,148.42685 12.26716,0.002 1.29885,3.17861 h -14.89019 z"
+           sodipodi:nodetypes="ccccc" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55899px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1"
+           x="98.125908"
+           y="165.67429"
+           id="text74828"
+           transform="scale(1.0542823,0.94851256)"><tspan
+             sodipodi:role="line"
+             id="tspan74826"
+             x="98.125908"
+             y="165.67429"
+             style="fill:#ffffff">JIA</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1"
+           x="95.518974"
+           y="155.82513"
+           id="text74832"
+           transform="scale(1.1267988,0.88746989)"><tspan
+             sodipodi:role="line"
+             id="tspan74830"
+             x="95.518974"
+             y="155.82513"
+             style="fill:#ffffff">YEO</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.35376px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1"
+           x="111.11317"
+           y="159.61931"
+           id="text74836"
+           transform="scale(1.0153608,0.98487158)"><tspan
+             sodipodi:role="line"
+             id="tspan74834"
+             x="111.11317"
+             y="159.61931"
+             style="fill:#ffffff">HAO</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g74864"
+       transform="translate(3.2520386,39.476133)"
+       style="filter:url(#filter75042)"
+       inkscape:export-filename="D:\My Projects\My Presences\Portfolio Website\assets\LogoArt\g74864.png"
+       inkscape:export-xdpi="1957"
+       inkscape:export-ydpi="1957">
+      <rect
+         style="fill:#0078d7;fill-opacity:1;stroke:none;stroke-width:0.266677;stroke-opacity:1"
+         id="rect74838"
+         width="35.249912"
+         height="27.875803"
+         x="43.860527"
+         y="87.935028"
+         rx="0.44588903"
+         ry="0.30397186" />
+      <rect
+         style="fill:none;stroke:#ffffff;stroke-width:0.256519;stroke-opacity:1"
+         id="rect74840"
+         width="12.386478"
+         height="7.5780663"
+         x="55.00032"
+         y="95.546944"
+         ry="0.35940328"
+         rx="0.49032637" />
+      <rect
+         style="fill:none;stroke:#ffffff;stroke-width:0.223199;stroke-opacity:1"
+         id="rect74842"
+         width="11.087738"
+         height="6.4092827"
+         x="55.665936"
+         y="96.180061"
+         ry="0.30397162"
+         rx="0.43891492" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.148534"
+         x="50.992462"
+         y="113.72143"
+         id="text74846"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan74844"
+           x="50.992462"
+           y="113.72143"
+           style="fill:#ffffff;stroke-width:0.148534">&lt;/&gt;</tspan></text>
+      <path
+         id="path74848"
+         style="fill:none;stroke:#ffffff;stroke-width:0.280789;stroke-opacity:1"
+         d="m 54.736601,103.78055 12.874457,0.0325 1.748637,4.06705 h -16.29887 z"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         id="path74850"
+         style="fill:none;stroke:#ffffff;stroke-width:0.235542;stroke-opacity:1"
+         d="m 55.074405,104.26096 12.267161,0.002 1.298852,3.17861 H 53.750223 Z"
+         sodipodi:nodetypes="ccccc" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55899px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.138975"
+         x="47.834709"
+         y="119.11096"
+         id="text74854"
+         transform="scale(1.0542823,0.94851256)"><tspan
+           sodipodi:role="line"
+           id="tspan74852"
+           x="47.834709"
+           y="119.11096"
+           style="fill:#ffffff;stroke-width:0.138975">JIA</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.94135px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.148534"
+         x="48.464321"
+         y="106.05906"
+         id="text74858"
+         transform="scale(1.1267988,0.88746989)"><tspan
+           sodipodi:role="line"
+           id="tspan74856"
+           x="48.464321"
+           y="106.05906"
+           style="fill:#ffffff;stroke-width:0.148534">YEO</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.35376px;line-height:1.25;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.133844"
+         x="58.894184"
+         y="114.77499"
+         id="text74862"
+         transform="scale(1.0153608,0.98487158)"><tspan
+           sodipodi:role="line"
+           id="tspan74860"
+           x="58.894184"
+           y="114.77499"
+           style="fill:#ffffff;stroke-width:0.133844">HAO</tspan></text>
+    </g>
+  </g>
+</svg>

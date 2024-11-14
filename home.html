@@ -1,0 +1,958 @@
+<!DOCTYPE HTML5>
+<html>
+
+<head>
+  <!-- Import three.js-->
+  <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@<version>/build/three.module.js"
+    }
+  }
+</script>
+
+<script type="module">
+
+import { TrackballControls } from "https://cdn.skypack.dev/three-trackballcontrols-ts@0.2.3";
+
+// Scene
+const scene = new THREE.Scene();
+
+// Camera
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.6,
+  1200
+);
+camera.position.z = 5; // Set camera position
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setClearColor("#233143"); // Set background colour
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement); // Add renderer to HTML as a canvas element
+
+// Make Canvas Responsive
+window.addEventListener("resize", () => {
+  renderer.setSize(window.innerWidth, window.innerHeight); // Update size
+  camera.aspect = window.innerWidth / window.innerHeight; // Update aspect ratio
+  camera.updateProjectionMatrix(); // Apply changes
+});
+
+// Create box:
+const boxGeometry = new THREE.BoxGeometry(2, 2, 2); // Define geometry
+const boxMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff }); // Define material // Simple white box
+const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial); // Build box
+boxMesh.rotation.set(40, 0, 40); // Set box initial rotation
+scene.add(boxMesh); // Add box to canvas
+
+// Create spheres:
+const sphereMeshes = [];
+const sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32); // Define geometry
+const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xc56cef }); // Define material
+for (let i = 0; i < 4; i++) {
+  sphereMeshes[i] = new THREE.Mesh(sphereGeometry, sphereMaterial); // Build sphere
+  sphereMeshes[i].position.set(0, 0, 0);
+  scene.add(sphereMeshes[i]); // Add sphere to canvas
+}
+
+// const newSphere = new THREE.SphereGeometry(10, 32, 32);
+// const sphereMaterial1 = new THREE.MeshLambertMaterial({color: 0xC56CEF});
+// const sphereMesh1 = new THREE.Mesh(newSphere, sphereMaterial1);
+// scene.add(newSphere)
+
+// Lights
+const lights = []; // Storage for lights
+const lightHelpers = []; // Storage for light helpers
+const pointLight = new THREE.PointLight({
+  colour: "white",
+  intensity: 8,
+  dist: 12,
+  x: 1,
+  y: 3,
+  z: 0
+});
+
+// Properties for each light
+const lightValues = [
+  { colour: 0x38e000, intensity: 8, dist: 12, x: 1, y: 0, z: 8 },
+  { colour: 0xc56cef, intensity: 6, dist: 12, x: -2, y: 1, z: -10 },
+  { colour: 0x000078, intensity: 3, dist: 10, x: 0, y: 10, z: 1 },
+  { colour: 0x00ffdd, intensity: 6, dist: 12, x: 0, y: -10, z: -1 },
+  { colour: 0x16a7f5, intensity: 6, dist: 12, x: 10, y: 3, z: 0 },
+  { colour: 0x000078, intensity: 6, dist: 12, x: -10, y: -1, z: 0 }
+];
+
+for (let i = 0; i < 6; i++) {
+  // Loop 6 times to add each light to lights array
+  // using the lightValues array to input properties
+  lights[i] = new THREE.PointLight(
+    lightValues[i]["colour"],
+    lightValues[i]["intensity"],
+    lightValues[i]["dist"]
+  );
+
+  lights[i].position.set(
+    lightValues[i]["x"],
+    lightValues[i]["y"],
+    lightValues[i]["z"]
+  );
+
+  scene.add(lights[i]);
+
+  // Add light helpers for each light
+  //     lightHelpers[i] = new THREE.PointLightHelper(lights[i]);
+  //     scene.add(lightHelpers[i]);
+}
+
+//Trackball Controls for Camera
+const controls = new TrackballControls(camera, renderer.domElement);
+controls.rotateSpeed = 4;
+controls.dynamicDampingFactor = 0.15;
+
+// Axes Helper
+// const axesHelper = new THREE.AxesHelper(5);
+// scene.add( axesHelper ); // X axis = red, Y axis = green, Z axis = blue
+
+// Trigonometry Constants for Orbital Paths
+let theta = 0; // Current angle
+// Angle increment on each render (100 = increments to complete revolution)
+const dTheta = (2 * Math.PI) / 100;
+
+// Rendering Function
+const rendering = function () {
+  // Rerender every time the page refreshes (pause when on another tab)
+  requestAnimationFrame(rendering);
+
+  // Update trackball controls
+  controls.update();
+
+  // Constantly rotate box
+  scene.rotation.z -= 0.005;
+  scene.rotation.x -= 0.01;
+
+  //Increment theta, and update sphere coords based off new value
+  theta += dTheta;
+
+  // Store trig functions for sphere orbits
+  // MUST BE INSIDE RENDERING FUNCTION OR THETA VALUES ONLY GET SET ONCE
+  const trigs = [
+    {
+      x: Math.cos(theta * 1.05),
+      y: Math.sin(theta * 1.05),
+      z: Math.cos(theta * 1.05),
+      r: 2
+    },
+    {
+      x: Math.cos(theta * 0.8),
+      y: Math.sin(theta * 0.8),
+      z: Math.sin(theta * 0.8),
+      r: 2.25
+    },
+    {
+      x: Math.cos(theta * 1.25),
+      y: Math.cos(theta * 1.25),
+      z: Math.sin(theta * 1.25),
+      r: 2.5
+    },
+    {
+      x: Math.sin(theta * 0.6),
+      y: Math.cos(theta * 0.6),
+      z: Math.sin(theta * 0),
+      r: 2.75
+    }
+  ];
+
+  // Loop 4 times (for each sphere), updating the position
+  for (let i = 0; i < 4; i++) {
+    sphereMeshes[i].position.x = trigs[i]["r"] * trigs[i]["x"];
+    sphereMeshes[i].position.y = trigs[i]["r"] * trigs[i]["y"];
+    sphereMeshes[i].position.z = trigs[i]["r"] * trigs[i]["z"];
+  }
+
+  renderer.render(scene, camera);
+};
+
+rendering();
+
+</script>
+
+  <title>Portfolio Website</title>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- <link href="../assets/local/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="./css/style.css" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/ae99c709a8.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <!-- <script src="../assets/local/dist/js/bootstrap.bundle.min.js"></script> -->
+
+  <div class="container-fluid">
+    <div class="row vh-100">
+      <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-light d-block sticky-top shadow dar" style="width: 280px;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-light justify-content-start sticky-top"
+          style="width: 100%;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-black text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32">
+              <use xlink:href="#bootstrap" />
+            </svg>
+            <span class="fs-4">YJH</span>
+          </a>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="#home" class="nav-link sideBarAnchor active">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#home" />
+                </svg>
+                Welcome
+              </a>
+            </li>
+            <li>
+              <a href="#myskills" class="nav-link sideBarAnchor text-black">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#speedometer2" />
+                </svg>
+                Skill Highlight
+              </a>
+            </li>
+            <li>
+              <a href="#education" class="nav-link sideBarAnchor text-black">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#table" />
+                </svg>
+                Education
+              </a>
+            </li>
+            <li>
+              <a href="#work" class="nav-link sideBarAnchor text-black">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#grid" />
+                </svg>
+                Work Experience
+              </a>
+            </li>
+            <li>
+              <a href="#project" class="nav-link sideBarAnchor text-black">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#people-circle" />
+                </svg>
+                Projects
+              </a>
+            </li>
+              <li>
+              <a href="#footer" class="nav-link sideBarAnchor text-black">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#people-circle" />
+                </svg>
+                Contact Me
+              </a>
+            </li>
+          </ul>
+          <hr>
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false">
+
+              <strong>Settings</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu text-small shadow">
+              <li><a class="dropdown-item" onclick="onClickDark()">Dark Mode</a></li>
+              <li><a class="dropdown-item" onclick="onClickLight()">Light Mode</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col d-flex flex-column h-auto">
+        <section id="home">
+          <div class="row overflow-auto">
+            <div class="col-12 p-0">
+              <div class="px-4 py-5 my-5 text-center ">
+                <a id="homeTop">
+                  <h1 class="display-5 fw-bold">Hi there</h1>
+                </a>
+                <script src="./javascript/utils/util.js"></script>
+                <h2 class="display-6">Im a <span class="text-info fw-light job-title" id="cycling_job"
+                    roles="Software Developer,Web Developer,Game Developer,Programmer,Coder,Engineer"></span><span
+                    class="text-cursor-blink">_</span></h2>
+                <div class="col-lg-6 mx-auto">
+                  <p class="lead mb-4">Welcome to my website, my name is Jia Hao and I'm a beginner software enginner
+                    who
+                    is interested in game development. You can see learn more about me by scrolling down or clicking the
+                    button below. I hope that you enjoy your visit in my website :)</p>
+                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Learn more</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <br>
+        <section id="myskills">
+          <div class="row">
+            <div class="col-12 text-center">
+              <div class="row">
+                <div class="col-12">
+                  <h1 class="display-5 fw-bold">SKILLS HIGHLIGHT</h1>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <div class="row mx-2 pt-3">
+                    <h5 class="display-6 fw-light">GAME AND MOBILE ENGINES</h5>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-lg-12 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/fluency/48/null/unity.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Unity Engine</div></img>
+                    </div>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-lg-6 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/nolan/50/unreal-engine.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Unreal Engine</div></img>
+                    </div>
+                    <div class="col-lg-6 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/fluency/50/null/android-studio--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Android Studio</div></img>
+                    </div>
+                  </div>
+                  <div class="row mx-2 pt-lg-3">
+                    <h5 class="display-6 fw-light">CONTENT CREATION TOOLS</h5>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/50/null/autodesk-maya.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Maya</div></img>
+                    </div>
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/blender-3d.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Blender</div></img>
+                    </div>
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/adobe-photoshop--v1.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Photoshop</div></img>
+                    </div>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/adobe-premiere-pro--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Premier Pro</div></img>
+                    </div>
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/adobe-audition.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Audition</div></img>
+                    </div>
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/adobe-xd--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Adobe XD</div></img>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <div class="row mx-2 pt-3">
+                    <h5 class="display-6 fw-light">PROGRAMMING LANGUAGES</h5>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-lg-12 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/c-sharp-logo.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">C#</div></img>
+                    </div>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-lg-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/python--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Python</div></img>
+                    </div>
+                    <div class="col-lg-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/nolan/64/lua-language--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Lua</div></img>
+                    </div>
+                    <div class="col-lg-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/java-coffee-cup-logo--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Java</div></img>
+                    </div>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <h5 class="display-6 fw-light">WEB DEVELOPMENT</h5>
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-md-6 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/50/null/external-html-5-is-a-software-solution-stack-that-defines-the-properties-and-behaviors-of-web-page-logo-color-tal-revivo.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">HTML5</div></img>
+                    </div>
+                    <div class="col-md-6 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/fluency/48/null/css3.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">CSS</div></img>
+                    </div>
+
+                  </div>
+                  <div class="row mx-2 pt-3">
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/color/48/null/javascript--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Javascript</div></img>
+                    </div>
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/fluency/48/null/typescript--v2.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">Typescript</div></img>
+                    </div>
+                    <div class="col-md-4 col-sm-12"><img style="width: 50px; height: 50px;"
+                        src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-sql-mobile-app-development-flaticons-lineal-color-flat-icons.png">
+                      <div class="small fw-bold fw-light pt-2" style="font-size: 20px;">SQL</div></img>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="row pt-5">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="game-engine">
+                  <h5 class="display-6 fw-light">GAME ENGINE</h5>
+                  <div class="row pt-4 pt-md-4">
+                    <div class="col-lg-4 text-center col-md-12 col-sm-12">
+                      <ul><span class="icon icon-unity"></span>Unity Engine</ul>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 mx-lg-3">
+                      <div class="bar mx-auto shadow" data-bs-toggle="tooltip" title="95%">
+                        <div class="bar unity"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-4 pt-md-4">
+                    <div class="col-lg-4 text-center col-md-12 col-sm-12">
+                      <ul><span class="icon icon-unity"></span>Unreal Engine</ul>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 mx-lg-3">
+                      <div class="bar mx-auto shadow" data-bs-toggle="tooltip" title="15%">
+                        <div class="bar unreal"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row pt-5">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="game-engine">
+                  <h5 class="display-6 fw-light">APPLICATION DEVELOPMENT</h5>
+                  <div class="row pt-4 pt-md-4">
+                    <div class="col-lg-4 text-center col-md-12 col-sm-12">
+                      <ul><span class="icon icon-android"></span>Android Studio</ul>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 mx-lg-3">
+                      <div class="bar mx-auto shadow" data-bs-toggle="tooltip" title="70%">
+                        <div class="bar android"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="row pt-5">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="game-engine">
+                  <h5 class="display-6 fw-light">CONTENT CREATION TOOLS</h5>
+                  <div class="row pt-4 pt-md-4">
+                    <div class="col-lg-4 text-center col-md-12 col-sm-12">
+                      <ul><span class="icon icon-android"></span>Maya</ul>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 mx-lg-3">
+                      <div class="bar mx-auto shadow" data-bs-toggle="tooltip" title="55%">
+                        <div class="bar maya"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row pt-4 pt-md-4">
+                    <div class="col-lg-4 text-center col-md-12 col-sm-12">
+                      <ul><span class="icon icon-android"></span>Blender</ul>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 mx-lg-3">
+                      <div class="bar mx-auto shadow" data-bs-toggle="tooltip" title="48%">
+                        <div class="bar blender"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+              </div>
+              
+            </div> -->
+            </div>
+          </div>
+        </section>
+        <section id="education">
+
+          <div class="row py-5 my-5">
+            <div class="col-12 text-center">
+
+              <h1 class="display-5 fw-bold">MY EDUCATION</h1>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="container">
+                <div class="main-timeline">
+                  <!-- start experience section-->
+                  <div class="timeline">
+                    <div class="icon"></div>
+                    <div class="date-content">
+                      <div class="date-outer">
+                        <span class="date">
+                          <span class="month">4 Years</span>
+                          <span class="year">2013</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="timeline-content">
+                      <h5 class="title">Henderson Secondary School (2013 - 2016) </h5>
+                      <p class="description">
+                        Attained N(A) level certification, procceed to secondary 5.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- end experience section-->
+
+                  <!-- start experience section-->
+                  <div class="timeline">
+                    <div class="icon"></div>
+                    <div class="date-content">
+                      <div class="date-outer">
+                        <span class="date">
+                          <span class="month">1 Years</span>
+                          <span class="year">2017</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="timeline-content">
+                      <h5 class="title">Bukit Merah Secondary School (2017) </h5>
+                      <p class="description">
+                        Transfered to Bukit Merah Secondary School (BMSS) due to school mergers and closure in 2017.
+                        Attained O level certification.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- end experience section-->
+                  <!-- start experience section-->
+                  <div class="timeline">
+                    <div class="icon"></div>
+                    <div class="date-content">
+                      <div class="date-outer">
+                        <span class="date">
+                          <span class="month">3 Years</span>
+                          <span class="year">2018</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="timeline-content">
+                      <h5 class="title">Temasek Polytechnic (2018 - 2020) </h5>
+                      <p class="description">
+                        Diploma: Game Design and Development (GDD)<br>
+                        <b>Key Module Completed:</b><br>
+                        Game Modelling, Game Development, Game Design, Data Structures and Algorithm, Coding and
+                        Development Project, User Interface and Experiance Design.<br>
+                        GPA: 3.39<br>
+                        Graduated Polytechnic with a diploma in game development/software development.<br>Attained
+                        Director’s List at 2018
+                      </p>
+                    </div>
+                  </div>
+                  <!-- end experience section-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="work">
+          <div class="row py-5 my-5">
+            <div class="col-12 text-center">
+
+              <h1 class="display-5 fw-bold">WORK EXPERIENCE</h1>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="container">
+                <div class="main-timeline">
+                  <!-- start experience section-->
+                  <div class="timeline">
+                    <div class="icon"></div>
+                    <div class="date-content">
+                      <div class="date-outer">
+                        <span class="date">
+                          <span class="month">7 Month</span>
+                          <span class="year">2020</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="timeline-content">
+                      <h5 class="title">Research and Development intern @ Hitachi Asia Pte Ltd<br>(Jul 2020 - Jan 2021)
+                      </h5>
+                      <p class="description">
+                        Assist and worked on map navigation technologies and machine learning. Develop multiple web
+                        application to visualise map navigation.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- end experience section-->
+                    
+                  <!-- start experience section-->
+
+                  <div class="main-timeline">
+                    <!-- start experience section-->
+                    <div class="timeline">
+                      <div class="icon"></div>
+                      <div class="date-content">
+                        <div class="date-outer">
+                          <span class="date">
+                            <span class="month">1 Month</span>
+                            <span class="year">2021</span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="timeline-content">
+                        <h5 class="title">Temasek Polytechnic<br>(Jul 2020 - Jan 2021) </h5>
+                        <p class="description">
+                          Assist lecturer in developing lecture note for Temasek Polytechnic.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="timeline">
+                      <div class="icon"></div>
+                      <div class="date-content">
+                        <div class="date-outer">
+                          <span class="date">
+                            <span class="month">Present</span>
+                            <span class="year">2021</span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="timeline-content">
+                        <h5 class="title">NSF @ Singapore Armed Force </h5>
+                        <p class="description">
+                          Enlisted in the Singapore Armed Forces and developed solutions for tracking and management of
+                          NDP logistic during NDP operation.
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="project">
+          <div class="row py-5 my-5">
+            <div class="text-center col-12">
+              <h1 class="display-5 fw-bold">
+                MY PROJECTS
+              </h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-sm-12 text-center">
+              <h1 class="display-6 fw-light pb-3">Game Development</h1>
+              <div class="row">
+                <div class="col-12 divider-vertical mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/portfolio-pong.png" style="max-width:50%;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">Pong AI</h1>
+                      <div class="text-info project-desc">A solo project that I developed on my first dive into
+                        reinforcement learning and ML. <br>Developed using Unity</div>
+                      <div class="project-link"><a href="https://github.com/Silver1713/PongAI">Pong AI Github</a></div>
+                      <!--Link Preview here-->
+                      <a class="no-style" href="https://github.com/Silver1713/PongAI">
+                        <div class="fetch-content" fetch-from="https://github.com/Silver1713/PongAI">
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-12 divider-vertical mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/platformer-run-screenshot.webp"
+                      style="max-width:50%;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">Platformer Jump</h1>
+                      <div class="text-info project-desc">This is an endless 2D runner developed as a start into Game
+                        Development. <br>Developed using Unity</div>
+                      <div class="project-link"><a href="https://github.com/Silver1713/simple-2d-platformer">2D Endless
+                          Runner/Platformer Github</a></div>
+                      <!--Link Preview here-->
+                      <a class="no-style" href="https://github.com/Silver1713/simple-2d-platformer">
+                        <div class="fetch-content" fetch-from="https://github.com/Silver1713/simple-2d-platformer">
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-12 divider-vertical mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/simple-2d-td-screen.png" style="max-width:50%;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">Simple 3D Tower Defence</h1>
+                      <div class="text-info project-desc">This is the tower defence game that was first developed in TP.
+                      </div>
+                      <div class="project-link"><a href="https://github.com/Silver1713/Simple-Tower-defence-3d">Simple
+                          Tower Defence 3D</a></div>
+                      <!--Link Preview here-->
+                      <a class="no-style" href="https://github.com/Silver1713/Simple-Tower-defence-3d">
+                        <div class="fetch-content" fetch-from="https://github.com/Silver1713/Simple-Tower-defence-3d">
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-12 divider-vertical mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/group-intern-game-screen.png" style="max-width:50%;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">Intern Game</h1>
+                      <div class="text-info project-desc">This is a group project developed to teach soon to be interns
+                        on intern ettiqute.</div>
+                      <div class="project-link"><a
+                          href="https://github.com/Silver1713/Simple-Tower-defence-3d">https://github.com/Silver1713/GDP_GP_V2</a>
+                      </div>
+                      <!--Link Preview here-->
+                      <a class="no-style" href="https://github.com/Silver1713/GDP_GP_V2">
+                        <div class="fetch-content" fetch-from="https://github.com/Silver1713/GDP_GP_V2">
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+            <div class="col-lg-6 col-sm-12 text-center">
+              <h1 class="display-6 fw-light pb-5">Software and Web Development</h1>
+              <div class="row">
+                <div class="col-12 mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/website-game-screen.png" style="max-width:50%;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">Game Review Website</h1>
+                      <div class="text-info project-desc">A project developed for CDEV module in Y1.1 as an intro to web
+                        development.</div>
+                      <div class="project-link"><a href="https://github.com/Silver1713/game-review-website">Game Review
+                          Website source</a></div>
+                      <!--Link Preview here-->
+                      <a class="no-style" href="https://github.com/Silver1713/game-review-website">
+                        <div class="fetch-content" fetch-from="https://github.com/Silver1713/game-review-website">
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-12 mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/portfolio-hitachi.png"
+                      style="max-width:50%; width: 400px; height: 200px; overflow: hidden; object-fit: fill;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">Indoor Navigation Software (NDA)</h1>
+                      <div class="text-info project-desc">A project developed during my time as an R&D intern at
+                        Hitachi.</div>
+                      <div class="project-link"><a href="#">This respositary is private</a></div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-12 mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/placeholder.jpg"
+                      style="max-width:50%; width: 400px; height: 200px; overflow: hidden; object-fit: fill;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">NDP Packing Bot (OSA)</h1>
+                      <div class="text-info project-desc">A project developed to automate SAF logistical tracking during
+                        NDP.</div>
+                      <div class="project-link"><a href="#">This respositary is private</a></div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-12 mx-3">
+                  <div class="d-inline-flex justify-content-center">
+                    <img class="img-thumbnail m-auto" src="./public/image/portfolio-saf-csscom.png"
+                      style="max-width:50%; width: 600px; height: 200px; overflow: hidden; object-fit: fill;">
+                    <div class="image-content-custom px-3 text-start">
+                      <h1 class="display-6 project-title">CSSCOM Mental Wellness Bot (OSA)</h1>
+                      <div class="text-info project-desc">A project developed to educate and provide wellness tips to
+                        servicemen, it is developed thru telegram.</div>
+                      <div class="project-link"><a href="#">This respositary is private</a></div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+          </div>
+
+          <div class="row py-5 m-auto">
+            <div class="col-lg-12 col-sm-12 text-center">
+              <h1 class="display-6 fw-light">UI Wireframes and Prototypes</h1>
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="display-7">Game Prototype</h5>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="col-12">
+                  <div class="subdisplay-1">Ancesion X: A ripple in Time</div>
+                </div>
+              </div>
+              <div class="row px-2">
+                <div class="col-12" >
+                  <iframe src="https://xd.adobe.com/embed/9dfb19aa-fc09-425f-4f8e-9106895fc4e2-ebca/" frameborder="0" allowfullscreen="true" style="position:relative; width:100%; height:1000px
+                  ;" class="embed-content"></iframe>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="display-7">Software Prototype</h5>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="col-12">
+                  <div class="subdisplay-1">InfoCov - COVID Awareness</div>
+                </div>
+              </div>
+              <div class="row px-2">
+                <div class="col-12 ">
+                  <iframe width="360" height="640" src="https://xd.adobe.com/embed/ec3e3c7e-c535-47ae-45a8-eb7ae305989c-9a0f/" frameborder="0" allowfullscreen=""></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </section>
+        <br>
+        <section id="footer">
+          <div class="container">
+            <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+              <div class="col mb-3 col-lg-2">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                  <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <p class="text-muted">Yeo Jia Hao © 2023</p>
+              </div>
+          
+              
+          
+              <div class="col mb-6 col-lg-5 col-sm-12">
+                <h5>Contacts</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="mailto:yeojiahao89@gmail.com?Subject=Portfolio Seen: SUBJECT HERE&body=I saw your portfolio and would like to contact you!%0D%0Acontent Here" class="nav-link p-0 text-muted"><i class="fa-solid fa-envelope symbols"></i> <span>&nbsp;YEOJIAHAO89@GMAIL.COM</span></a></li>
+                  <li class="nav-item mb-2"><a href="mailto:yeo_jia_hao.22@hotmail.com?Subject=Portfolio Seen: SUBJECT HERE&body=I saw your portfolio and would like to contact you!%0D%0Acontent Here" class="nav-link p-0 text-muted"><i class="fa-solid fa-envelope symbols"></i> <span>&nbsp;YEO_JIA_HAO.22@HOTMAIL.COM</span></a></li>
+                  <li class="nav-item mb-2"><a href="tel:+6597708284" class="nav-link p-0 text-muted"><i class="fa-solid fa-phone symbols"></i> <span>&nbsp;(+65)&nbsp;9770&nbsp;8284</span></a></li>
+                  
+                </ul>
+              </div>
+          
+              <div class="col mb-6 col-lg-5 col-sm-12">
+                <h5>Socials</h5>
+                <ul class="nav d-inline-flex gap-1 flex-sm-column flex-lg-row">
+                  <li class="nav-item mb-2"><a href="https://www.linkedin.com/in/yeo-jia-hao-51117b194/" class="nav-link p-0"><i class="fa-brands fa-linkedin symbols"></i></a></li>
+                  <li class="nav-item mb-2"><a href="https://github.com/Silver1713" class="nav-link p-0"><i class="fa-brands fa-square-github symbols"></i></a></li>
+                  <li class="nav-item mb-2"><a href="https://www.behance.net/1805450Bba7b" class="nav-link p-0 "><i class="fa-brands fa-square-behance symbols"></i></a></li>
+                </ul>
+              </div>
+          
+              
+            </footer>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script defer>
+    //Trigger bootstrap tooltips and run when DOM loaded
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  </script>
+
+  <script href="./javascript/generator.js" src="./javascript/generator.js" defer></script>
+  <script href="./javascript/menu_anchor.js" src="./javascript/menu_anchor.js" defer>
+  </script>
+</body>
+
+</html>
